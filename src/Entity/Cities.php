@@ -71,7 +71,7 @@ class Cities
         return $this;
     }
 
-    public function removeCityStart(Flights $cityStart: static
+    public function removeCityStart(Flights $cityStart): static
     {
         if ($this->city_start->removeElement($cityStart)) {
             // set the owning side to null (unless already changed)

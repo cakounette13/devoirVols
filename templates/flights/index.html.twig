@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Flights index{% endblock %}
+
+{% block body %}
+    <h1>Flights index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Num_flight</th>
+                <th>Hour_start</th>
+                <th>Hour_end</th>
+                <th>Price</th>
+                <th>Reduc</th>
+                <th>Total_seats</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for flight in flights %}
+            <tr>
+                <td>{{ flight.id }}</td>
+                <td>{{ flight.numFlight }}</td>
+                <td>{{ flight.hourStart ? flight.hourStart|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ flight.hourEnd ? flight.hourEnd|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ flight.price }}</td>
+                <td>{{ flight.reduc ? 'Yes' : 'No' }}</td>
+                <td>{{ flight.totalSeats }}</td>
+                <td>
+                    <a href="{{ path('app_flights_show', {'id': flight.id}) }}">show</a>
+                    <a href="{{ path('app_flights_edit', {'id': flight.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_flights_new') }}">Create new</a>
+{% endblock %}

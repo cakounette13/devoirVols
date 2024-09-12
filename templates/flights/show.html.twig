@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Flights{% endblock %}
+
+{% block body %}
+    <h1>Flights</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ flight.id }}</td>
+            </tr>
+            <tr>
+                <th>Num_flight</th>
+                <td>{{ flight.numFlight }}</td>
+            </tr>
+            <tr>
+                <th>Hour_start</th>
+                <td>{{ flight.hourStart ? flight.hourStart|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Hour_end</th>
+                <td>{{ flight.hourEnd ? flight.hourEnd|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ flight.price }}</td>
+            </tr>
+            <tr>
+                <th>Reduc</th>
+                <td>{{ flight.reduc ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Total_seats</th>
+                <td>{{ flight.totalSeats }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_flights_index') }}">back to list</a>
+
+    <a href="{{ path('app_flights_edit', {'id': flight.id}) }}">edit</a>
+
+    {{ include('flights/_delete_form.html.twig') }}
+{% endblock %}
