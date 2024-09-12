@@ -3,10 +3,44 @@
 {% block title %}Liste des vols{% endblock %}
 
 {% block body %}
-    <h1>Liste des vols</h1>
-
-    <div class="container">
-        
-        
+    <h1 class="text-start">Liste des vols</h1>
+    
+    <a role="button" class="btn btn-info" href="#">S'identifier</a>
+   
+    <div class="form-group">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Numéro de vol</th>
+                    <th scope="col">Ville de départ</th>
+                    <th scope="col">Ville d'arrivée</th>
+                    <th scope="col">Jour de départ</th>
+                    <th scope="col">Heure de départ</th>
+                    <th scope="col">Jour d'arrivée</th>
+                    <th scope="col">Heure d'arrivée</th>
+                    <th scope="col">Places</th>
+                    <th scope="col">Prix</th>
+                    <th scope="col">Réduction</th>
+                </tr>
+            </thead>
+           
+            <tbody>
+                {% for flight in flights %}
+                <tr>
+                    <td>{{ flight.num_flight }}</td>
+                    <td>{{ flight.city_start }}</td>
+                    <td>{{ flight.city_end }}</td>
+                    <td>{{ flight.hour_start.date|format_datetime(pattern="MMMM dd") }}</td>
+                    <td>{{ flight.hour_start.date|format_datetime(pattern="HHHH") }}</td>
+                    <td>{{ flight.hour_end }}</td>
+                    <td>{{ flight.hour_end }}</td>
+                    <td>{{ flight.total_seats }}</td>
+                    <td>{{ flight.price }}</td>
+                    <td>{{ flight.reduc }}</td>
+                </tr>
+                 {% endfor %}
+            </tbody>
+        </table>
+       
     </div>
 {% endblock %}

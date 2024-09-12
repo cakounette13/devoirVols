@@ -40,6 +40,10 @@ class Flights
     #[ORM\Column]
     private ?int $total_seats = null;
 
+    public function __construct() {
+        $this->num_flight = $this->nbrAleatoireFlight();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,5 +143,12 @@ class Flights
         $this->total_seats = $total_seats;
 
         return $this;
+    }
+
+    public function nbrAleatoireFlight() {
+        // Génère 2 lettres aléatoires
+        $letters = chr(rand(65,90)).chr(rand(65,90));
+        $numbers = rand(1000, 9999);
+        return $letters.$numbers;
     }
 }

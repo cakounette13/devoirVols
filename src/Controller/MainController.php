@@ -12,8 +12,9 @@ class MainController extends AbstractController
     #[Route('/', name: 'app_main')]
     public function index(FlightsRepository $flightsRepository): Response
     {
+        $flights = $flightsRepository->findAll();
         return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
+            'flights' => $flights,
         ]);
     }
 }
