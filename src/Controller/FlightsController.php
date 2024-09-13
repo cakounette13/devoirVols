@@ -33,6 +33,7 @@ final class FlightsController extends AbstractController
             $entityManager->persist($flight);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Le vol a bien été créé !');
             return $this->redirectToRoute('app_flights_index', [], Response::HTTP_SEE_OTHER);
         }
 

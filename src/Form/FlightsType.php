@@ -7,11 +7,11 @@ use App\Entity\Flights;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints as Assert;
 
 class FlightsType extends AbstractType
 {
@@ -38,6 +38,12 @@ class FlightsType extends AbstractType
             ->add('hour_end', null , [
                 'widget' => 'single_text',
                 'label' => 'Jour et Heure d\'arrivée',
+                'constraints' => [
+                    new Assert\GreaterThan([
+                        'propertyPath' => 'parent.all[hour_start].data',
+                        'message' => 'L\'heure d\'arrivée doit être postérieure à l\'heure de départ.',
+                    ]),
+                ]
             ])
             ->add('total_seats', IntegerType::class, [
                 'label' => 'Places'

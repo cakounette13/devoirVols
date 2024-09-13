@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Flights{% endblock %}
+{% block title %}Modifier un vol{% endblock %}
 
 {% block body %}
-    <h1>Edit Flights</h1>
+    <h1>Modifier un vol</h1>
 
     {{ include('flights/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_flights_index') }}">back to list</a>
+    
+    <a type="button" class="btn btn-success" href="{{ path('app_flights_index') }}">Retour à la liste des vols</a>
+
 
     {{ include('flights/_delete_form.html.twig') }}
 {% endblock %}
