@@ -30,6 +30,11 @@ class Cities
     #[ORM\OneToMany(targetEntity: Flights::class, mappedBy: 'city_end')]
     private Collection $city_end;
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     public function __construct()
     {
         $this->city_start = new ArrayCollection();

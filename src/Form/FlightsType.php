@@ -7,6 +7,7 @@ use App\Entity\Flights;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,11 +21,11 @@ class FlightsType extends AbstractType
             ->add('num_flight', TextType::class, [
                 'label' => 'Numéro de vol'
             ] )
-            ->add('hour_start', null, [
+            ->add('hour_start', DateType::class, [
                 'widget' => 'single_text',
                 'label' => 'Jour et Heure de départ',
             ])
-            ->add('hour_end', null, [
+            ->add('hour_end', DateType::class , [
                 'widget' => 'single_text',
                 'label' => 'Jour et Heure d\'arrivée',
             ])

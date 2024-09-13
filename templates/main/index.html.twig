@@ -27,14 +27,14 @@
             <tbody>
                 {% for flight in flights %}
                 <tr>
-                    <td>{{ flight.num_flight }}</td>
-                    <td>{{ flight.city_start }}</td>
-                    <td>{{ flight.city_end }}</td>
-                    <td>{{ flight.hour_start.date|format_datetime(pattern="MMMM dd") }}</td>
-                    <td>{{ flight.hour_start.date|format_datetime(pattern="HHHH") }}</td>
-                    <td>{{ flight.hour_end }}</td>
-                    <td>{{ flight.hour_end }}</td>
-                    <td>{{ flight.total_seats }}</td>
+                    <td>{{ flight.numFlight }}</td>
+                    <td>{{ flight.cityStart }}</td>
+                    <td>{{ flight.cityEnd }}</td>
+                    <td>{{ flight.hourStart }}</td>
+                    <td>{{ flight.hourStart }}</td>
+                    <td>{{ flight.hourEnd }}</td>
+                    <td>{{ flight.hourEnd }}</td>
+                    <td>{{ flight.totalSeats }}</td>
                     <td>{{ flight.price }}</td>
                     <td>{{ flight.reduc }}</td>
                 </tr>
