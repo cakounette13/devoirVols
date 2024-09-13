@@ -3,34 +3,37 @@
 {% block title %}Flights index{% endblock %}
 
 {% block body %}
-    <h1>Flights index</h1>
+    <h1 class="text-center">Liste des vols - Administration</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Num_flight</th>
-                <th>Hour_start</th>
-                <th>Hour_end</th>
-                <th>Price</th>
-                <th>Reduc</th>
-                <th>Total_seats</th>
-                <th>actions</th>
+                <th>Numéro de vol</th>
+                <th>Ville de départ</th>
+                <th>Ville d'arrivée</th>
+                <th>Heure de départ</th>
+                <th>Heure d'arrivée</th>
+                <th>Places</th>
+                <th>Prix</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
         <tbody>
         {% for flight in flights %}
             <tr>
-                <td>{{ flight.id }}</td>
                 <td>{{ flight.numFlight }}</td>
-                <td>{{ flight.hourStart ? flight.hourStart|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ flight.hourEnd ? flight.hourEnd|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ flight.price }}</td>
-                <td>{{ flight.reduc ? 'Yes' : 'No' }}</td>
+                <td>{{ flight.cityStart}}</td>
+                <td>{{ flight.cityEnd }}</td>
+                <td>{{ flight.hourStart ? flight.hourStart|date('d-m-Y') : '' }}</td>
+                <td>{{ flight.hourEnd ? flight.hourEnd|date('d-m-Y') : '' }}</td>
                 <td>{{ flight.totalSeats }}</td>
+                <td>{{ flight.price }}</td>
+                <td>   
+                    <a href="{{ path('app_flights_edit', {'id': flight.id}) }}"><img src="/icones/editer.png" alt="modifier vol"></a>
+                </td>
                 <td>
-                    <a href="{{ path('app_flights_show', {'id': flight.id}) }}">show</a>
-                    <a href="{{ path('app_flights_edit', {'id': flight.id}) }}">edit</a>
+                    <a href="{{ path('app_flights_delete', {'id': flight.id}) }}"><img src="/icones/supprimer.png" alt="supprimer vol"></a>
                 </td>
             </tr>
         {% else %}
@@ -40,6 +43,7 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_flights_new') }}">Create new</a>
+    <div class="col-3 mx-auto">
+        <a type="button" class="btn btn-success" href="{{ path('app_flights_new') }}">Ajouter un nouveau vol</a>
+    </div>
 {% endblock %}

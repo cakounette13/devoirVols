@@ -1,5 +1,41 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
+<div class="container col-6">
+    {{ form_start(form) }}
+        <div class="col-12">
+            {{ form_row(form.num_flight) }}
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-sm-6">
+                {{ form_row(form.city_start) }}
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                {{ form_row(form.hour_start) }}
+            </div>
+        </div>
+       
+        <div class="row">
+            <div class="col-lg-6 col-sm-6">
+                {{ form_row(form.city_end) }}
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                {{ form_row(form.hour_end) }}
+            </div>
+        </div>
 
-    <button class="btn btn-info">{{ button_label|default('Enregistrer') }}</button>
-{{ form_end(form) }}
+        <div class="col-12">
+            {{ form_row(form.total_seats)}}
+        </div>
+
+        <div class="col-12">
+            {{ form_row(form.price)}}
+        </div>
+
+        <div class="col-12">
+            {{ form_row(form.reduc)}}
+        </div>
+
+        <div class="col-3 mx-auto">
+            <button class="btn btn-info">{{ button_label|default('Enregistrer') }}</button>
+        </div>
+    {{ form_end(form) }}
+</div>
+

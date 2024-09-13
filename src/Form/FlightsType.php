@@ -21,13 +21,26 @@ class FlightsType extends AbstractType
             ->add('num_flight', TextType::class, [
                 'label' => 'Numéro de vol'
             ] )
-            ->add('hour_start', DateType::class, [
+            ->add('city_start', EntityType::class, [
+                'class' => Cities::class,
+                'choice_label' => 'name',
+                'label' => 'Ville de départ',
+            ])
+            ->add('city_end', EntityType::class, [
+                'class' => Cities::class,
+                'choice_label' => 'name',
+                'label' => 'Ville d\'arrivée',
+            ])
+            ->add('hour_start', null, [
                 'widget' => 'single_text',
                 'label' => 'Jour et Heure de départ',
             ])
-            ->add('hour_end', DateType::class , [
+            ->add('hour_end', null , [
                 'widget' => 'single_text',
                 'label' => 'Jour et Heure d\'arrivée',
+            ])
+            ->add('total_seats', IntegerType::class, [
+                'label' => 'Places'
             ])
             ->add('price', IntegerType::class, [
                 'label' => 'Prix',
@@ -38,19 +51,6 @@ class FlightsType extends AbstractType
                     'oui' => true,
                     'non' => false,
                 ]
-            ])
-            ->add('total_seats', IntegerType::class, [
-                'label' => 'Places'
-            ])
-            ->add('city_start', EntityType::class, [
-                'class' => Cities::class,
-                'choice_label' => 'id',
-                'label' => 'Ville de départ',
-            ])
-            ->add('city_end', EntityType::class, [
-                'class' => Cities::class,
-                'choice_label' => 'id',
-                'label' => 'Ville d\'arrivée',
             ])
         ;
     }

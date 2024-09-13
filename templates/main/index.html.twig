@@ -28,15 +28,17 @@
                 {% for flight in flights %}
                 <tr>
                     <td>{{ flight.numFlight }}</td>
-                    <td>{{ flight.cityStart }}</td>
-                    <td>{{ flight.cityEnd }}</td>
-                    <td>{{ flight.hourStart }}</td>
-                    <td>{{ flight.hourStart }}</td>
-                    <td>{{ flight.hourEnd }}</td>
-                    <td>{{ flight.hourEnd }}</td>
+                    <td>{{ flight.cityStart.name }}</td>
+                    <td>{{ flight.cityEnd.name }}</td>
+                    <td>{{ flight.hourStart|date('F-dS') }}</td>
+                    <td>{{ flight.hourStart|date('H:i') }}</td>
+                    <td>{{ flight.hourEnd|date('F-dS') }}</td>
+                    <td>{{ flight.hourEnd|date('H:i') }}</td>
                     <td>{{ flight.totalSeats }}</td>
                     <td>{{ flight.price }}</td>
-                    <td>{{ flight.reduc }}</td>
+                    {% if flight.reduc == true %}
+                    <td><img src="/icones/insigne-de-reduction.png" alt="réduction"></td>
+                    {% endif %}
                 </tr>
                  {% endfor %}
             </tbody>

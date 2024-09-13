@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cities index{% endblock %}
+{% block title %}Les villes{% endblock %}
 
 {% block body %}
-    <h1>Cities index</h1>
+    <h1>Liste des villes</h1>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>Nom</th>
+                <th>Editer</th>
+                <th>Supprimer</th>
             </tr>
         </thead>
         <tbody>
@@ -20,16 +21,19 @@
                 <td>{{ city.name }}</td>
                 <td>
                     <a href="{{ path('app_cities_show', {'id': city.id}) }}">show</a>
+                </td>
+                <td>
                     <a href="{{ path('app_cities_edit', {'id': city.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">La liste est vide</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_cities_new') }}">Create new</a>
+    <a role="button" class="btn btn-info" href="{{ path('app_cities_new') }}">Créé une nouvelle ville</a>
+    <a role="button" class="btn btn-info" href="{{ path('app_main') }}">Retour accueil</a>
 {% endblock %}
