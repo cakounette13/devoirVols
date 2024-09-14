@@ -34,6 +34,12 @@ class FlightsType extends AbstractType
             ->add('hour_start', null, [
                 'widget' => 'single_text',
                 'label' => 'Jour et Heure de départ',
+                'constraints' => [
+                    new Assert\GreaterThanOrEqual([
+                        'value' => new \DateTime(),
+                        'message' => 'L\'heure de départ doit être postèrieure à maintenant.',
+                    ]),
+                ]
             ])
             ->add('hour_end', null , [
                 'widget' => 'single_text',

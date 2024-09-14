@@ -46,9 +46,9 @@
         </tbody>
     </table>
 
-    <a type="button" class="btn btn-info" href="{{ path('app_flights_index') }}">back to list</a>
+    <a type="button" class="btn btn-info" href="{{ path('app_flights_index') }}">Retour à la liste des vols</a>
 
-    <a type="button" class="btn btn-success" href="{{ path('app_flights_edit', {'id': flight.id}) }}">edit</a>
+    <a type="button" class="btn btn-success" href="{{ path('app_flights_edit', {'id': flight.id}) }}">Modifier</a>
 
     {{ include('flights/_delete_form.html.twig') }}
 {% endblock %}

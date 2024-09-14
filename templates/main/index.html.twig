@@ -3,9 +3,19 @@
 {% block title %}Liste des vols{% endblock %}
 
 {% block body %}
-    <h1 class="text-start">Liste des vols</h1>
+<div class="container">
+    <div class="row">
+        <h1 class="col-8">Liste des vols</h1>
     
-    <a role="button" class="btn btn-info" href="#">S'identifier</a>
+        {% if app.user %}
+        <a type="button" class="btn btn-info col-4" href="{{ path('app_logout')}}">Se déconnecter</a>
+        {% else %}
+        <a type="button" class="btn btn-info col-2" href="{{ path('app_register')}}">S'inscrire</a>
+        <a type="button" class="btn btn-info col-2" href="{{ path('app_login')}}">Se connecter</a>
+        {% endif %}
+
+    </div>
+   
    
     <div class="form-group">
         <table class="table table-striped">
@@ -43,6 +53,15 @@
                  {% endfor %}
             </tbody>
         </table>
-       
+        {% if is_granted('ROLE_ADMIN') %}
+        <div class="mx-auto">
+            <a type="button" class="btn btn-success" href="{{ path('app_flights_new') }}">Ajouter un nouveau vol</a>
+            <a type="button" class="btn btn-success" href="{{ path('app_cities_new') }}">Ajouter une nouvelle ville</a>
+            <a type="button" class="btn btn-info" href="{{ path('app_flights_index') }}">Page Administration</a>
+        </div>
+        {% endif %}
+        
     </div>
+</div>
+    
 {% endblock %}

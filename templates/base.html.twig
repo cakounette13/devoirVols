@@ -13,7 +13,7 @@
         
         {% block body %}
 
-            {% for message in app.flashes %}
+            {% for message in app.flashes("success") %}
             <div class="container">
                 <div class="alert alert-success">
                    <p>{{ message }}</p> 

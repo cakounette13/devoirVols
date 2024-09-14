@@ -20,10 +20,10 @@
                 <td>{{ city.id }}</td>
                 <td>{{ city.name }}</td>
                 <td>
-                    <a href="{{ path('app_cities_show', {'id': city.id}) }}">show</a>
+                    <a href="{{ path('app_cities_edit', {'id': city.id}) }}"><img src="/icones/editer.png" alt="modifier une ville"></a>
                 </td>
                 <td>
-                    <a href="{{ path('app_cities_edit', {'id': city.id}) }}">edit</a>
+                    <a href="{{ path('app_cities_delete', {'id': city.id}) }}"><img src="/icones/supprimer.png" alt="supprimer une ville"></a>
                 </td>
             </tr>
         {% else %}
